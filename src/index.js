@@ -4,7 +4,7 @@ const app = express()
 // load env vars
 require('dotenv').config()
 
-// load routes from routes.ts
+// load routes from routes.js
 require('./routes')(app)
 
 // start the app

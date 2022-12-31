@@ -14,14 +14,10 @@ const storage = multer.diskStorage({
         cb(null, file.originalname)
     }
 })
-
 const upload = multer({ storage: storage })
 
+// routes
 module.exports = function (app) {
-    app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname, '/../public/views/upload.html'))
-    })
-
     app.post('/upload', upload.any('files'), (req, res) => {
         let files = []
         
