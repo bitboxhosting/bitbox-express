@@ -10,7 +10,8 @@ const storage = multer.diskStorage({
         const fileSize = parseInt(req.headers["content-length"])
 
         if (fileSize > parseInt(process.env.MAX_SIZE)) {
-            cb(null, '/var/empty')
+            fs.mkdirSync(`/tmp/${rand}`)
+            cb(null, `/tmp/${rand}`)
         } else {
             fs.mkdirSync(path.join(__dirname, `/../public/uploads/${rand}`))
             cb(null, path.join(__dirname, `/../public/uploads/${rand}`))
