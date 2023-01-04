@@ -27,10 +27,6 @@ const upload = multer({
 
 // routes
 module.exports = function (app) {
-    app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname, '/../public/views/upload.html'))
-    })
-
     app.post('/upload', upload.single('files'), (req, res) => {
         if (!req.file) {
             return res.json({ error: 'no files specified' })
