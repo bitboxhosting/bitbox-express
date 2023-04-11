@@ -7,6 +7,9 @@ const app = express()
 // load env vars
 require('dotenv').config()
 
+// make public dir available
+app.use(express.static('public'))
+
 // load routes from routes.js
 require('./routes')(app)
 
