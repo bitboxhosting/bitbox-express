@@ -1,0 +1,9 @@
+{
+    "message": "", // message, may appear as a banner
+    "rules": "", // rules for the upload server
+    "donate": "" // a link to a donations page if available
+}
+
+// oh yeah also remove these comments in your own config.json
+// because json isn't supposed to have comments, this is just
+// blank fields which will be sent to frontend upon request

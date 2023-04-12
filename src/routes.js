@@ -2,6 +2,7 @@ const multer = require('multer')
 const path = require('path')
 const randomstring = require('randomstring')
 const fs = require('fs')
+const config = require('../config.json')
 
 // configure multer, used for handling file uploads
 const storage = multer.diskStorage({
@@ -36,5 +37,9 @@ module.exports = function (app) {
         let file = req.file.path.replace(/^.*(?=\/uploads\/)/, '')
 
         res.json(file)
+    })
+
+    app.get('/info', (req, res) => {
+        return res.json(config)
     })
 }
