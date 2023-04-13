@@ -25,7 +25,7 @@ const limiter = rateLimit({
 	legacyHeaders: false
 })
 
-app.use(limiter)
+app.use('/upload', limiter)
 
 // load routes from routes.js
 require('./routes')(app)
