@@ -1,6 +1,6 @@
 {
     "message": "", // message, may appear as a banner
-    "rules": "", // rules for the upload server
+    "rules": [], // rules for the upload server
     "donate": "" // a link to a donations page if available
 }
 
