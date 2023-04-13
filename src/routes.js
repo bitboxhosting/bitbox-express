@@ -42,4 +42,8 @@ module.exports = function (app) {
     app.get('/info', (req, res) => {
         return res.json(config)
     })
+
+    app.get('/', (req, res) => {
+        return res.sendFile(path.join(__dirname, '/../html/index.html'))
+    })
 }
