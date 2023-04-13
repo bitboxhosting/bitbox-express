@@ -2,6 +2,7 @@ const multer = require('multer')
 const path = require('path')
 const randomstring = require('randomstring')
 const fs = require('fs')
+const addLog = require('./log.js')
 const config = require('../config.json')
 
 // configure multer, used for handling file uploads
@@ -35,6 +36,11 @@ module.exports = function (app) {
         }
 
         let file = req.file.path.replace(/^.*(?=\/uploads\/)/, '')
+
+        addLog(
+            path.join(__dirname, '/../server/uploads.log'),
+            `${req.ip} uploaded file ${file}`
+        )
 
         res.json(file)
     })
