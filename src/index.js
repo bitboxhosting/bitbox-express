@@ -3,6 +3,7 @@ const https = require('https')
 const fs = require('fs')
 const path = require('path')
 const app = express()
+const rateLimit = require('express-rate-limit')
 const config = require('../config.json')
 
 // make public dir available
@@ -16,6 +17,15 @@ app.use((req, res, next) => {
 })
 
 app.set('trust proxy', true)
+
+const limiter = rateLimit({
+	windowMs: config.limiterconf.minutes * 60 * 1000,
+	max: config.limiterconf.max,
+	standardHeaders: true,
+	legacyHeaders: false
+})
+
+app.use(limiter)
 
 // load routes from routes.js
 require('./routes')(app)

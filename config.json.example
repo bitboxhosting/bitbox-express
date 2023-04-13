@@ -1,10 +1,14 @@
 {
-    "serverconf": [
+    "serverconf": {
         "port": 3000,
         "https": true, // requires additional setup
         "id_length": 7, // length of file identifiers
-        "max_size": 536870912 
-    ],
+        "max_size": 536870912 // 512 MB (1024*1024*512)
+    },
+    "limiterconf": {
+        "max": 16, // requests per
+        "minutes": 10
+    },
     "message": "", // message, may appear as a banner
     "rules": [], // rules for the upload server
     "donate": "" // a link to a donations page if available
