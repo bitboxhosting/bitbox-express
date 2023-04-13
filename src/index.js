@@ -3,9 +3,7 @@ const https = require('https')
 const fs = require('fs')
 const path = require('path')
 const app = express()
-
-// load env vars
-require('dotenv').config()
+const config = require('../config.json')
 
 // make public dir available
 app.use(express.static('public'))
@@ -23,7 +21,7 @@ app.set('trust proxy', true)
 require('./routes')(app)
 
 // start the app
-if ((process.env.SERVER_TYPE == 'https')) {
+if ((config.serverconf.https == true)) {
     https
         .createServer(
             {
@@ -36,11 +34,11 @@ if ((process.env.SERVER_TYPE == 'https')) {
             },
             app
         )
-        .listen(process.env.PORT ?? 3000, () => {
+        .listen(config.serverconf.port, () => {
             console.log(`App started on port ${process.env.PORT ?? 3000} (https)`)
         })
 } else {
-    app.listen(process.env.PORT ?? 3000, () => {
+    app.listen(config.serverconf.port, () => {
         console.log(`App started on port ${process.env.PORT ?? 3000}`)
     })
 }
