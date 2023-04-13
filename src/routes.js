@@ -9,7 +9,7 @@ const config = require('../config.json')
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         let rand = randomstring.generate(config.serverconf.id_length)
-        const fileSize = parseInt(req.headers["content-length"])
+        const fileSize = parseInt(req.headers['content-length'])
 
         if (fileSize > config.serverconf.max_size) {
             fs.mkdirSync(`/tmp/${rand}`)
@@ -21,11 +21,11 @@ const storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname)
-    }
+    },
 })
 const upload = multer({
     storage: storage,
-    limits: { fileSize: config.serverconf.max_size }
+    limits: { fileSize: config.serverconf.max_size },
 })
 
 // routes
@@ -42,7 +42,10 @@ module.exports = function (app) {
             `${req.ip} uploaded file ${file}`
         )
 
-        res.json(file)
+        res.json({
+            file: file,
+            id: file.replace(/^\/[^\/]+\//, '').replace(/\/.*/, ''),
+        })
     })
 
     app.get('/info', (req, res) => {

@@ -21,7 +21,7 @@ app.set('trust proxy', true)
 require('./routes')(app)
 
 // start the app
-if ((config.serverconf.https == true)) {
+if (config.serverconf.https == true) {
     https
         .createServer(
             {
@@ -30,12 +30,14 @@ if ((config.serverconf.https == true)) {
                 ),
                 cert: fs.readFileSync(
                     path.join(__dirname, '/../server/server.cert')
-                )
+                ),
             },
             app
         )
         .listen(config.serverconf.port, () => {
-            console.log(`App started on port ${process.env.PORT ?? 3000} (https)`)
+            console.log(
+                `App started on port ${process.env.PORT ?? 3000} (https)`
+            )
         })
 } else {
     app.listen(config.serverconf.port, () => {
