@@ -46,11 +46,11 @@ if (config.serverconf.https == true) {
         )
         .listen(config.serverconf.port, () => {
             console.log(
-                `App started on port ${process.env.PORT ?? 3000} (https)`
+                `App started on port ${config.serverconf.port} (https)`
             )
         })
 } else {
     app.listen(config.serverconf.port, () => {
-        console.log(`App started on port ${process.env.PORT ?? 3000}`)
+        console.log(`App started on port ${config.serverconf.port}`)
     })
 }
