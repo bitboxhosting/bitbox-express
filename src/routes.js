@@ -49,11 +49,7 @@ module.exports = function (app) {
     })
 
     app.get('/info', (req, res) => {
-        return res.json({
-            message: config.message,
-            rules: config.rules,
-            donate: config.donate
-        })
+        return res.json(config.serverinfo)
     })
 
     app.get('/', (req, res) => {

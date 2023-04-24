@@ -9,9 +9,14 @@
         "max": 16, // requests per
         "minutes": 10
     },
-    "message": "", // message, may appear as a banner
-    "rules": [], // rules for the upload server
-    "donate": "" // a link to a donations page if available
+    "serverinfo": {
+        "message": "", // message, may appear as a banner
+        "rules": [], // rules for the upload server
+        "donate": "", // a link to a donations page if available
+        "country": "", // two letter country code. example: us for united states
+        "server_name": "BitBox Server", // name for the server
+        "owner_name": "owner" // name of server owner
+    }
 }
 
 // oh yeah also remove these comments in your own config.json
