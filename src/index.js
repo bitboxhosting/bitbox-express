@@ -1,6 +1,7 @@
 const express = require('express')
 const https = require('https')
 const fs = require('fs')
+const compression = require('compression')
 const path = require('path')
 const app = express()
 const rateLimit = require('express-rate-limit')
@@ -15,6 +16,8 @@ app.use((req, res, next) => {
     res.append('Access-Control-Allow-Headers', 'Content-Type')
     next()
 })
+
+app.use(compression())
 
 app.set('trust proxy', true)
 
