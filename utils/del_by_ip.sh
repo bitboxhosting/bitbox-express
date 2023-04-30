@@ -12,7 +12,6 @@ target_ip="$1"
 temp_file=$(mktemp)
 
 # loop through each line in the log file
-# loop through each line in the log file
 while read line; do
     # extract the uploader IP from the line
     uploader_ip=$(echo "$line" | awk '{print $3}')
