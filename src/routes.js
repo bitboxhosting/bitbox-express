@@ -55,4 +55,8 @@ module.exports = function (app) {
     app.get('/', (req, res) => {
         return res.sendFile(path.join(__dirname, '/../html/index.html'))
     })
+
+    app.get('/privacy', (req, res) => {
+        return res.sendFile(path.join(__dirname, '/../html/privacy.html'))
+    })
 }

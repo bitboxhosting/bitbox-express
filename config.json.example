@@ -16,7 +16,8 @@
         "donate": "", // a link to a donations page if available
         "country": "", // two letter country code. example: us for united states
         "server_name": "BitBox Server", // name for the server
-        "owner_name": "owner" // name of server owner
+        "owner_name": "owner", // name of server owner
+        "owner_email": "admin@example.com" // email of server owner
     }
 }
 
