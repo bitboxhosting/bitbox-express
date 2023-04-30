@@ -30,3 +30,15 @@ Anyone can also contribute to the Bitbox project and make it even better.
 - use https. 99.9% of users will not be able to access your server if you use http.
 - put your certificates in the `server` folder if using https. certificate file should be named `server.cert`, key file should be named `server.key`, and if you have a CA bundle file, name it `ca_bundle.crt` and enable `https_use_ca_bundle` in the config file.
 - want to be added to the server list? I will add servers that are reliably active 24/7. email me at ash@midiidev.xyz to request your server to be added.
+
+## Utils
+
+### del_by_id
+`utils/del_by_id.sh` accepts an argument of a file id (example: "NMujvfD") and will delete that file
+
+usage: `utils/del_by_id.sh "NMujvfD"`
+
+### del_by_ip
+delete all files uploaded by a specified IP. it accepts an argument of the IP
+
+usage `utils/del_by_ip.sh "::ffff:127.0.0.1"`
