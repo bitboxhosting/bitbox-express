@@ -2,6 +2,7 @@
     "serverconf": {
         "port": 3000,
         "https": true, // requires additional setup
+        "https_use_ca_bundle": false, // make true if you have a CA bundle
         "id_length": 7, // length of file identifiers
         "max_size": 536870912 // 512 MB (1024*1024*512)
     },

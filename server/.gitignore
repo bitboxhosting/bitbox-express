@@ -1,4 +1,5 @@
 server.key
 server.cert
+ca_bundle.crt
 
 uploads.log

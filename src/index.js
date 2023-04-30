@@ -34,24 +34,47 @@ app.use('/upload', limiter)
 require('./routes')(app)
 
 // start the app
-if (config.serverconf.https == true) {
-    https
-        .createServer(
-            {
-                key: fs.readFileSync(
-                    path.join(__dirname, '/../server/server.key')
-                ),
-                cert: fs.readFileSync(
-                    path.join(__dirname, '/../server/server.cert')
-                ),
-            },
-            app
-        )
-        .listen(config.serverconf.port, () => {
-            console.log(
-                `App started on port ${config.serverconf.port} (https)`
+if (config.serverconf.https) {
+    if (config.serverconf.https_use_ca_bundle) {
+        https
+            .createServer(
+                {
+                    key: fs.readFileSync(
+                        path.join(__dirname, '/../server/server.key')
+                    ),
+                    cert: fs.readFileSync(
+                        path.join(__dirname, '/../server/server.cert')
+                    ),
+                    ca: fs.readFileSync(
+                        path.join(__dirname, '/../server/ca_bundle.crt')
+                    )
+                },
+                app
             )
-        })
+            .listen(config.serverconf.port, () => {
+                console.log(
+                    `App started on port ${config.serverconf.port} (https)`
+                )
+            })
+    } else {
+        https
+            .createServer(
+                {
+                    key: fs.readFileSync(
+                        path.join(__dirname, '/../server/server.key')
+                    ),
+                    cert: fs.readFileSync(
+                        path.join(__dirname, '/../server/server.cert')
+                    )
+                },
+                app
+            )
+            .listen(config.serverconf.port, () => {
+                console.log(
+                    `App started on port ${config.serverconf.port} (https)`
+                )
+            })
+    }
 } else {
     app.listen(config.serverconf.port, () => {
         console.log(`App started on port ${config.serverconf.port}`)
