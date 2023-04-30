@@ -8,8 +8,10 @@ const addLog = (logFile, content) => {
         }
     })
 
-    fs.appendFileSync(logFile, `${content}\n`)
-    console.log(content)
+    const log = `${Math.floor(Date.now()/1000)} -- ${content}`
+
+    fs.appendFileSync(logFile, `${log}\n`)
+    console.log(log)
 }
 
 module.exports = addLog
